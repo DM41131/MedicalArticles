@@ -16,5 +16,32 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    // Memory optimization for EC2 micro instances
+    target: 'es2015',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          mui: ['@mui/material', '@mui/icons-material'],
+          router: ['react-router-dom'],
+        },
+      },
+    },
+    // Reduce memory usage during build
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false,
+  },
+  // Optimize dependencies
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
+  },
 });
 

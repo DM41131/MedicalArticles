@@ -1,7 +1,7 @@
 {
   "name": "articles-app",
   "version": "1.0.0",
-  "description": "Full-stack articles management system with markdown support",
+  "description": "Full-stack articles management system with markdown support - EC2 Micro Optimized",
   "scripts": {
     "install-all": "npm install && cd client && npm install && cd ../server && npm install",
     "install:all": "npm run install-all",
@@ -11,28 +11,41 @@
     "server": "cd server && npm run dev",
     "build": "cd client && npm run build",
     "build-client": "cd client && npm run build",
+    "build:low-memory": "chmod +x build-low-memory.sh && ./build-low-memory.sh",
     "start": "cd server && npm start",
-    "start:prod": "cd server && set NODE_ENV=production&& npm start",
-    "build:prod": "npm run build && npm run start:prod",
+    "start:prod": "cd server && npm start",
+    "start:pm2": "pm2 start ecosystem.config.js",
+    "stop:pm2": "pm2 stop ecosystem.config.js",
+    "restart:pm2": "pm2 restart ecosystem.config.js",
+    "build:prod": "npm run build:low-memory && npm run start:pm2",
     "db:init": "cd server && npm run db:init",
     "db:seed": "cd server && npm run db:seed",
     "db:create-admin": "cd server && npm run db:create-admin",
     "db:reset": "cd server && npm run db:reset",
     "db:fix-slugs": "cd server && npm run db:fix-slugs",
     "db:fix-article-slugs": "cd server && npm run db:fix-article-slugs",
-    "db:migrate-sources": "cd server && npm run db:migrate-sources"
+    "db:migrate-sources": "cd server && npm run db:migrate-sources",
+    "deploy:ec2": "chmod +x ec2-deploy.sh && ./ec2-deploy.sh",
+    "monitor": "pm2 monit",
+    "logs": "pm2 logs",
+    "status": "pm2 status"
   },
   "keywords": [
     "articles",
     "markdown",
     "react",
     "nodejs",
-    "mongodb"
+    "mongodb",
+    "ec2",
+    "low-memory"
   ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }
-
