@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
-import { config } from '../config/env.js';
+import { connectDB } from '../config/db.js';
 import Category from '../models/Category.js';
 import Navigation from '../models/Navigation.js';
 
 const seedDatabase = async () => {
   try {
     // Connect to MongoDB
-    await mongoose.connect(config.mongoUri);
+    await connectDB();
     console.log('✅ Connected to MongoDB\n');
 
     console.log('=== Seeding Database ===\n');
@@ -92,9 +92,11 @@ const seedDatabase = async () => {
     }
 
     console.log('\n✅ Database seeding completed successfully!');
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
     console.error('\n❌ Error:', error.message);
+    await mongoose.disconnect();
     process.exit(1);
   }
 };

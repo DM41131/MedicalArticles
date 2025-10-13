@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import readline from 'readline';
-import { config } from '../config/env.js';
+import { connectDB } from '../config/db.js';
 import User from '../models/User.js';
 import Category from '../models/Category.js';
 import Navigation from '../models/Navigation.js';
@@ -20,7 +20,7 @@ const initDatabase = async () => {
 
     // Connect to MongoDB
     console.log('📡 Connecting to MongoDB...');
-    await mongoose.connect(config.mongoUri);
+    await connectDB();
     console.log('✅ Connected to MongoDB\n');
 
     // Check database status
@@ -164,10 +164,12 @@ const initDatabase = async () => {
     console.log('  npm run dev\n');
 
     rl.close();
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     rl.close();
+    await mongoose.disconnect();
     process.exit(1);
   }
 };

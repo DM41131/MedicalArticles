@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import readline from 'readline';
-import { config } from '../config/env.js';
+import { connectDB } from '../config/db.js';
 import User from '../models/User.js';
 import Category from '../models/Category.js';
 import Article from '../models/Article.js';
@@ -29,7 +29,7 @@ const resetDatabase = async () => {
 
     // Connect to MongoDB
     console.log('\n📡 Connecting to MongoDB...');
-    await mongoose.connect(config.mongoUri);
+    await connectDB();
     console.log('✅ Connected to MongoDB\n');
 
     console.log('🗑️  Deleting all data...');
@@ -55,10 +55,12 @@ const resetDatabase = async () => {
     console.log('  npm run db:init\n');
 
     rl.close();
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     rl.close();
+    await mongoose.disconnect();
     process.exit(1);
   }
 };

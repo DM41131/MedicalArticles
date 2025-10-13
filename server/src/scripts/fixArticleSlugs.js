@@ -29,9 +29,11 @@ const fixArticleSlugs = async () => {
     console.log(`\n✓ Fixed ${fixed} article slugs`);
     console.log(`✓ ${articles.length - fixed} articles were already correct`);
 
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
     console.error('Error fixing article slugs:', error);
+    await mongoose.disconnect();
     process.exit(1);
   }
 };

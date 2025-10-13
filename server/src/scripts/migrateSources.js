@@ -47,9 +47,11 @@ const migrateSources = async () => {
     console.log(`✓ Migrated: ${migrated} articles`);
     console.log(`✓ Skipped: ${skipped} articles (no source or already migrated)`);
 
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
     console.error('Error migrating sources:', error);
+    await mongoose.disconnect();
     process.exit(1);
   }
 };

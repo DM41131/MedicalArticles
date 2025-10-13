@@ -29,9 +29,11 @@ const fixCategorySlugs = async () => {
     console.log(`\n✓ Fixed ${fixed} category slugs`);
     console.log(`✓ ${categories.length - fixed} categories were already correct`);
 
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
     console.error('Error fixing category slugs:', error);
+    await mongoose.disconnect();
     process.exit(1);
   }
 };

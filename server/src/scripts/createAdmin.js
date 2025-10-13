@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import readline from 'readline';
-import { config } from '../config/env.js';
+import { connectDB } from '../config/db.js';
 import User from '../models/User.js';
 
 const rl = readline.createInterface({
@@ -13,7 +13,7 @@ const question = (query) => new Promise((resolve) => rl.question(query, resolve)
 const createAdminUser = async () => {
   try {
     // Connect to MongoDB
-    await mongoose.connect(config.mongoUri);
+    await connectDB();
     console.log('✅ Connected to MongoDB\n');
 
     // Get admin details
@@ -59,10 +59,12 @@ const createAdminUser = async () => {
     }
 
     rl.close();
+    await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     rl.close();
+    await mongoose.disconnect();
     process.exit(1);
   }
 };
