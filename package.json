@@ -1,0 +1,38 @@
+{
+  "name": "articles-app",
+  "version": "1.0.0",
+  "description": "Full-stack articles management system with markdown support",
+  "scripts": {
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "install:all": "npm run install-all",
+    "dev-all": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "npm run dev-all",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "build-client": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "start:prod": "cd server && set NODE_ENV=production&& npm start",
+    "build:prod": "npm run build && npm run start:prod",
+    "db:init": "cd server && npm run db:init",
+    "db:seed": "cd server && npm run db:seed",
+    "db:create-admin": "cd server && npm run db:create-admin",
+    "db:reset": "cd server && npm run db:reset",
+    "db:fix-slugs": "cd server && npm run db:fix-slugs",
+    "db:fix-article-slugs": "cd server && npm run db:fix-article-slugs",
+    "db:migrate-sources": "cd server && npm run db:migrate-sources"
+  },
+  "keywords": [
+    "articles",
+    "markdown",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
