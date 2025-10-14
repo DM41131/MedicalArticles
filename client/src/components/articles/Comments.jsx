@@ -20,6 +20,12 @@ import { useAuth } from '../../store/useAuth';
 
 const CommentItem = ({ comment, onDelete, onReply, replyingTo, replyForm }) => {
   const { user } = useAuth();
+  
+  // Add null checks to prevent errors
+  if (!comment || !comment.user) {
+    return null; // Don't render if comment or user data is missing
+  }
+  
   const canDelete = user && (user._id === comment.user._id || user.role === 'admin');
   const isReplying = replyingTo === comment._id;
 
@@ -48,8 +54,8 @@ const CommentItem = ({ comment, onDelete, onReply, replyingTo, replyForm }) => {
     <Box sx={{ mb: 2 }}>
       <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
         <Avatar 
-          src={comment.user.avatar} 
-          alt={comment.user.username}
+          src={comment.user?.avatar} 
+          alt={comment.user?.username || 'User'}
           sx={{ width: 36, height: 36 }}
         />
         <Box sx={{ flexGrow: 1, minWidth: 0 }}>
@@ -70,7 +76,7 @@ const CommentItem = ({ comment, onDelete, onReply, replyingTo, replyForm }) => {
               fontWeight={600}
               sx={{ mb: 0.5, fontSize: '0.875rem' }}
             >
-              {comment.user.username}
+              {comment.user?.username || 'Anonymous User'}
             </Typography>
             <Typography 
               variant="body2" 
@@ -80,7 +86,7 @@ const CommentItem = ({ comment, onDelete, onReply, replyingTo, replyForm }) => {
                 color: 'text.primary',
               }}
             >
-              {comment.content}
+              {comment.content || 'Comment content not available'}
             </Typography>
           </Box>
 
@@ -126,7 +132,7 @@ const CommentItem = ({ comment, onDelete, onReply, replyingTo, replyForm }) => {
             )}
             
             <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
-              {getTimeAgo(comment.createdAt)}
+              {comment.createdAt ? getTimeAgo(comment.createdAt) : 'Unknown time'}
             </Typography>
 
             {canDelete && (
@@ -429,16 +435,18 @@ const Comments = ({ articleId }) => {
         </Box>
       ) : (
         <Box>
-          {comments.map((comment) => (
-            <CommentItem
-              key={comment._id}
-              comment={comment}
-              onDelete={handleDelete}
-              onReply={isAuthenticated ? handleReply : null}
-              replyingTo={replyTo}
-              replyForm={ReplyForm}
-            />
-          ))}
+          {comments
+            .filter(comment => comment && comment._id && comment.user) // Filter out invalid comments
+            .map((comment) => (
+              <CommentItem
+                key={comment._id}
+                comment={comment}
+                onDelete={handleDelete}
+                onReply={isAuthenticated ? handleReply : null}
+                replyingTo={replyTo}
+                replyForm={ReplyForm}
+              />
+            ))}
         </Box>
       )}
     </Paper>
