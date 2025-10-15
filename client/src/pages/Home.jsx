@@ -201,7 +201,7 @@ const Home = () => {
                 textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
-              Welcome to Articles Hub
+             მედარეა
             </Typography>
             <Typography 
               variant="h5" 
@@ -212,7 +212,7 @@ const Home = () => {
                 textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
               }}
             >
-              Discover and share knowledge through our collection of articles
+              აღმოაჩინე და გააზიარე ცონდნა ჩვენი პლათფორმის მეშვეობით
             </Typography>
             <Button
               component={Link}
@@ -233,7 +233,7 @@ const Home = () => {
                 transition: 'all 0.3s ease',
               }}
             >
-              Explore Articles
+              აღმოაჩინე სტატიები
             </Button>
           </Box>
         </Container>
@@ -249,7 +249,7 @@ const Home = () => {
                 <Typography variant="h5" fontWeight="bold" gutterBottom>
                   {stats.totalArticles}
                 </Typography>
-                <Typography variant="body2">Articles Published</Typography>
+                <Typography variant="body2">გამოქვეყნებული სტატიები</Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -258,7 +258,7 @@ const Home = () => {
                 <Typography variant="h5" fontWeight="bold" gutterBottom>
                   {stats.totalViews.toLocaleString()}
                 </Typography>
-                <Typography variant="body2">Total Views</Typography>
+                <Typography variant="body2">სულ ნახვები</Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -267,7 +267,7 @@ const Home = () => {
                 <Typography variant="h5" fontWeight="bold" gutterBottom>
                   {stats.totalCategories}
                 </Typography>
-                <Typography variant="body2">Categories</Typography>
+                <Typography variant="body2">კატეგორიები</Typography>
               </Box>
             </Grid>
           </Grid>
@@ -282,7 +282,7 @@ const Home = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
             <StarIcon sx={{ color: 'warning.main', fontSize: 32 }} />
             <Typography variant="h3" fontWeight="bold">
-              Featured Articles
+              რჩეული სტატიები
             </Typography>
           </Box>
           
@@ -394,7 +394,7 @@ const Home = () => {
                               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                                 <VisibilityIcon fontSize="small" color="action" sx={{ color: 'white' }} />
                                 <Typography variant="body2" color="text.secondary" sx={{ color: 'white' }}>
-                                  {article.views || 0} views
+                                  {article.views || 0} ნახვა
                                 </Typography>
                               </Box>
                             </Box>
@@ -416,7 +416,7 @@ const Home = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
             <TrendingUpIcon sx={{ color: 'error.main', fontSize: 32 }} />
             <Typography variant="h3" fontWeight="bold">
-              Trending Articles
+              პოპულარული სტატიები  
             </Typography>
           </Box>
           <Grid container spacing={3}>
@@ -484,7 +484,7 @@ const Home = () => {
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 2 }}>
                         <VisibilityIcon fontSize="small" color="action" />
                         <Typography variant="body2" color="text.secondary">
-                          {article.views || 0} views
+                          {article.views || 0} ნახვა
                         </Typography>
                       </Box>
                     </CardContent>
@@ -507,14 +507,15 @@ const Home = () => {
                 mb: 2,
                 background: 'linear-gradient(45deg, #667eea 30%, #764ba2 90%)',
                 backgroundClip: 'text',
+                lineHeight: 1.5,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              Discover by Topic
+              აღმოაჩინე სასურველი თემატიკა
             </Typography>
             <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-              Explore our curated collection of articles organized by category
+              სტატიები კლასიფიცირებულია თემატური კატეგორიების მიხედვით 
             </Typography>
           </Box>
           
@@ -717,7 +718,7 @@ const Home = () => {
       {/* Recent Articles */}
       <Box>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-          <Typography variant="h4">Recent Articles</Typography>
+          <Typography variant="h4">ახალი სტატიები</Typography>
           <Button component={Link} to="/articles">
             View All
           </Button>

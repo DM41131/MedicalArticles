@@ -124,7 +124,7 @@ const Articles = () => {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Typography variant="h3" component="h1" gutterBottom>
-        Articles
+        სტატიები
       </Typography>
 
       <Grid container spacing={3}>
@@ -133,7 +133,7 @@ const Articles = () => {
           {/* Filters */}
           <Box sx={{ mb: 3, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
             <TextField
-              label="Search"
+              label="ძიება"
               variant="outlined"
               size="small"
               value={filters.search}
@@ -142,10 +142,10 @@ const Articles = () => {
             />
             
             <FormControl size="small" sx={{ minWidth: 150 }}>
-              <InputLabel>Category</InputLabel>
+              <InputLabel>კატეგორიები</InputLabel>
               <Select
                 value={filters.category}
-                label="Category"
+                label="კატეგორიები"
                 onChange={(e) => handleFilterChange('category', e.target.value)}
               >
                 <MenuItem value="">All</MenuItem>
@@ -158,16 +158,16 @@ const Articles = () => {
             </FormControl>
 
             <FormControl size="small" sx={{ minWidth: 150 }}>
-              <InputLabel>Sort By</InputLabel>
+              <InputLabel>სორტირება</InputLabel>
               <Select
                 value={filters.sort}
-                label="Sort By"
+                label="სორტირება"
                 onChange={(e) => handleFilterChange('sort', e.target.value)}
               >
-                <MenuItem value="-createdAt">Newest</MenuItem>
-                <MenuItem value="createdAt">Oldest</MenuItem>
-                <MenuItem value="-views">Most Viewed</MenuItem>
-                <MenuItem value="title">Title (A-Z)</MenuItem>
+                <MenuItem value="-createdAt">უახლესი</MenuItem>
+                <MenuItem value="createdAt">ძველი</MenuItem>
+                <MenuItem value="-views">ხშირად ნახვადი</MenuItem>
+                <MenuItem value="title">ანბანის მიხედვით</MenuItem>
               </Select>
             </FormControl>
           </Box>

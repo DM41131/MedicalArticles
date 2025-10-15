@@ -117,7 +117,7 @@ const Navbar = () => {
   const drawer = (
     <Box>
       <Typography variant="h6" sx={{ my: 2, px: 2, fontWeight: 600 }}>
-        Articles
+        მედარეა
       </Typography>
       <Divider />
       <List>
@@ -205,7 +205,7 @@ const Navbar = () => {
               fontWeight: 600,
             }}
           >
-            Articles
+            მედარეა
           </Typography>
 
           {!isMobile && (
@@ -229,7 +229,7 @@ const Navbar = () => {
                 onClick={handleCategoryMenu}
                 endIcon={<ArrowDropDownIcon />}
               >
-                Categories
+                კატეგორიები
               </Button>
               <Menu
                 anchorEl={categoryAnchorEl}
@@ -282,7 +282,7 @@ const Navbar = () => {
               <TextField
                 size="small"
                 fullWidth
-                placeholder="Search articles..."
+                placeholder="საძიებო სისტემა..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 InputProps={{
@@ -361,18 +361,18 @@ const Navbar = () => {
                     onClick={handleClose}
                   >
                     <DashboardIcon sx={{ mr: 1 }} fontSize="small" />
-                    Admin Dashboard
+                    ადმინის პანელი
                   </MenuItem>
                 )}
                 <MenuItem onClick={handleLogout}>
                   <LogoutIcon sx={{ mr: 1 }} fontSize="small" />
-                  Logout
+                  გამოსვლა
                 </MenuItem>
               </Menu>
             </>
           ) : (
             <Button component={Link} to="/login" color="inherit">
-              Login
+              შესვლა
             </Button>
           )}
         </Toolbar>
