@@ -15,7 +15,11 @@ const ArticleCard = ({ article }) => {
 
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <CardActionArea component={Link} to={`/articles/${article.slug || article._id}`}>
+      <CardActionArea 
+        component={Link} 
+        to={`/articles/${article.slug || article._id}`}
+        sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}
+      >
         <CardMedia
           component="img"
           height="200"
@@ -47,20 +51,43 @@ const ArticleCard = ({ article }) => {
             {article.title}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+          <Typography 
+            variant="body2" 
+            color="text.secondary" 
+            sx={{ 
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
             {article.excerpt}
           </Typography>
-
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 2 }}>
-            <Typography variant="caption" color="text.secondary">
-              By {article.author?.username || 'Unknown'}
-            </Typography>
-            <Typography variant="caption" color="text.secondary">
-              • {new Date(article.createdAt).toLocaleDateString()}
-            </Typography>
-          </Box>
         </CardContent>
       </CardActionArea>
+      
+      {/* Footer section - always at the bottom */}
+      <Box 
+        sx={{ 
+          px: 2, 
+          py: 1.5, 
+          borderTop: '1px solid',
+          borderColor: 'divider',
+          backgroundColor: 'grey.50',
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: 1,
+          mt: 'auto'
+        }}
+      >
+        <Typography variant="caption" color="text.secondary">
+          ავტორი {article.author?.username || 'Unknown'}
+        </Typography>
+        <Typography variant="caption" color="text.secondary">
+          • {new Date(article.createdAt).toLocaleDateString()}
+        </Typography>
+      </Box>
     </Card>
   );
 };
