@@ -720,7 +720,7 @@ const Home = () => {
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
           <Typography variant="h4">ახალი სტატიები</Typography>
           <Button component={Link} to="/articles">
-            View All
+            ყველა სტატია
           </Button>
         </Box>
         <Grid container spacing={3}>
