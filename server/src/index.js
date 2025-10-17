@@ -64,13 +64,13 @@ app.use('/api/categories', categoriesRoutes);
 app.use('/api/navigation', navigationRoutes);
 app.use('/api/articles', articlesRoutes);
 
-// SEO Routes (sitemap)
-app.use('/', sitemapRoutes);
-
 // Health check route
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running' });
 });
+
+// SEO Routes (sitemap) - MUST be before React app catch-all
+app.use('/', sitemapRoutes);
 
 // Serve React App in Production
 if (config.nodeEnv === 'production') {
