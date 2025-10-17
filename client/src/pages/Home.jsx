@@ -30,6 +30,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ArticleCard from '../components/articles/ArticleCard';
+import SEO from '../components/common/SEO';
 import { api } from '../api/http';
 import coverImage from '../assets/cover.jpg';
 
@@ -173,6 +174,11 @@ const Home = () => {
 
   return (
     <>
+      <SEO 
+        title="სამედიცინო სტატიები და კალკულატორები | Medical Articles Georgia"
+        description="ქართული სამედიცინო ინფორმაციის პლატფორმა. სამედიცინო სტატიები, კლინიკური კალკულატორები, ჯანმრთელობის რჩევები და მეტი. უახლესი სამედიცინო ინფორმაცია და ექიმების რჩევები."
+        keywords="სამედიცინო სტატიები, medical articles, ჯანმრთელობა, health georgia, სამედიცინო კალკულატორები, BMI calculator, ექიმი, doctor, healthcare, medical information"
+      />
       {/* Hero Section with Cover Image */}
       <Box
         sx={{

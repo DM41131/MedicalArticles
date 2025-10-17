@@ -15,6 +15,7 @@ import usersRoutes from './routes/users.routes.js';
 import categoriesRoutes from './routes/categories.routes.js';
 import navigationRoutes from './routes/navigation.routes.js';
 import articlesRoutes from './routes/articles.routes.js';
+import sitemapRoutes from './routes/sitemap.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,6 +52,9 @@ app.use('/api/users', usersRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/navigation', navigationRoutes);
 app.use('/api/articles', articlesRoutes);
+
+// SEO Routes (sitemap)
+app.use('/', sitemapRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {

@@ -14,6 +14,7 @@ import ArticleCover from '../components/articles/ArticleCover';
 import ArticleMeta from '../components/articles/ArticleMeta';
 import MarkdownRenderer from '../components/markdown/MarkdownRenderer';
 import Comments from '../components/articles/Comments';
+import SEO from '../components/common/SEO';
 import { api } from '../api/http';
 
 const ArticleView = () => {
@@ -63,11 +64,22 @@ const ArticleView = () => {
   }
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Paper sx={{ p: { xs: 2, md: 4 } }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          {article.title}
-        </Typography>
+    <>
+      <SEO 
+        title={`${article.title} | Medical Articles Georgia`}
+        description={article.excerpt || article.content?.substring(0, 160)}
+        keywords={article.tags?.join(', ')}
+        image={article.coverImage}
+        article={true}
+        author={article.author?.name}
+        publishedTime={article.createdAt}
+        modifiedTime={article.updatedAt}
+      />
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Paper sx={{ p: { xs: 2, md: 4 } }}>
+          <Typography variant="h3" component="h1" gutterBottom>
+            {article.title}
+          </Typography>
 
         <ArticleMeta article={article} />
 
@@ -174,6 +186,7 @@ const ArticleView = () => {
 
       <Comments articleId={article._id} />
     </Container>
+    </>
   );
 };
 
