@@ -17,7 +17,7 @@ const SEO = ({
   canonicalUrl
 }) => {
   const location = useLocation();
-  const baseUrl = 'https://yourdomain.com'; // Replace with your actual domain
+  const baseUrl = 'http://dla.ge';
   const currentUrl = `${baseUrl}${location.pathname}`;
   const defaultImage = `${baseUrl}/og-image.jpg`;
 

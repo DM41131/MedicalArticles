@@ -31,6 +31,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// SEO-friendly headers - ensure no blocking
+app.use((req, res, next) => {
+  // Ensure no X-Robots-Tag: noindex headers
+  res.removeHeader('X-Robots-Tag');
+  // Add proper cache headers for static content
+  if (req.path.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$/)) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000'); // 1 year
+  }
+  next();
+});
+
 // Redirect HTTP to HTTPS in production (only if HTTPS is enabled)
 if (config.nodeEnv === 'production' && shouldEnableHTTPS()) {
   app.use((req, res, next) => {

@@ -4,7 +4,7 @@ import Category from '../models/Category.js';
 /**
  * Generate XML sitemap for the website
  */
-export const generateSitemap = async (baseUrl = 'https://yourdomain.com') => {
+export const generateSitemap = async (baseUrl = 'http://dla.ge') => {
   try {
     // Get all published articles
     const articles = await Article.find({ status: 'published' })

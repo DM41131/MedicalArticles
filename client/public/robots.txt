@@ -1,15 +1,6 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Allow: /
-
-# Disallow admin pages
 Disallow: /admin
 Disallow: /admin/*
 Disallow: /login
-
-# Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
-
-# Crawl-delay (optional, adjust as needed)
-Crawl-delay: 1
+Sitemap: http://dla.ge/sitemap.xml
 

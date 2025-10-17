@@ -7,7 +7,7 @@ const router = express.Router();
 // GET /api/sitemap.xml
 router.get('/sitemap.xml', async (req, res) => {
   try {
-    const baseUrl = config.clientUrl || 'https://yourdomain.com';
+    const baseUrl = config.clientUrl || 'http://dla.ge';
     const sitemap = await generateSitemap(baseUrl);
     
     res.header('Content-Type', 'application/xml');
